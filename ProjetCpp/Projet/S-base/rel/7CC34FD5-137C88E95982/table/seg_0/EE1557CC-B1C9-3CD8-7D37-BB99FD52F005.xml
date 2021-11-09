@@ -1,0 +1,122 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="EE1557CC-B1C9-3CD8-7D37-BB99FD52F005" schemaObject="4004E999-0D93-67E7-ABFB-7E10EC929647" name="GS_TICKETS">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>GS_TICKETS</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:30 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_TICKET" id="3C6010F1-023A-CFE8-165B-01DF68E0D3A4">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>GS_TICKETS</sourceObjSchema>
+<sourceObjName>ID_TICKET</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:30 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DATE_VENTE" id="7EC4B8AB-0368-B944-CDA5-979BC96036F3">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>GS_TICKETS</sourceObjSchema>
+<sourceObjName>DATE_VENTE</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:30 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CIN_CLIENT" id="D484E4EC-1762-3571-F694-7194724331DA">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>GS_TICKETS</sourceObjSchema>
+<sourceObjName>CIN_CLIENT</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:30 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="814C3089-9CE6-E577-AB10-35957FAAA132" referredColumn="96736269-5DEA-E66E-7910-743E5547A18E"/>
+</associations>
+</Column>
+<Column name="CIN_PERSONNELS" id="55FFC11C-9F04-B49A-170C-C84E80A2AE0A">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>GS_TICKETS</sourceObjSchema>
+<sourceObjName>CIN_PERSONNELS</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:30 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7655E9BE-558B-06B1-680D-64428E3DEF1A" referredColumn="04F0D4A9-FEA1-61CD-9045-80A2B83B8F35"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="152FA0CE-EC3A-335E-3533-69D1254780BE" name="GS_TICKETS_PK">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>GS_TICKETS_PK</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:30 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3C6010F1-023A-CFE8-165B-01DF68E0D3A4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F555771F-3FE5-92C4-88B1-C45189A92A55" schemaObject="4004E999-0D93-67E7-ABFB-7E10EC929647" name="GS_TICKETS_PK">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>GS_TICKETS_PK</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:30 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3C6010F1-023A-CFE8-165B-01DF68E0D3A4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A848ACED-17A0-7297-4DE1-E24E5A19B951" name="GS_TICKETS_SK_01">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:30 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="55FFC11C-9F04-B49A-170C-C84E80A2AE0A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="71BF22A5-ABFA-E524-E2BD-C28D59A67FBA" name="GS_TICKETS_SK_02">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:30 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D484E4EC-1762-3571-F694-7194724331DA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

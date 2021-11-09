@@ -1,0 +1,70 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="EA75D5C2-1E52-F897-97E1-CFE112296BAA" schemaObject="4004E999-0D93-67E7-ABFB-7E10EC929647" name="GS_APPROVISIONNEMENT">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>GS_APPROVISIONNEMENT</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:57 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_APP" id="E0FF80CE-599D-8AD0-BECA-CF1400CCF7DC">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>GS_APPROVISIONNEMENT</sourceObjSchema>
+<sourceObjName>ID_APP</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:57 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CLASSE" id="BA3B4B2C-ACB0-C19E-1DCC-D1A594E0C33B">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>GS_APPROVISIONNEMENT</sourceObjSchema>
+<sourceObjName>CLASSE</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:57 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="14E6BB65-D54D-9B9B-AFC5-67EC20DF9220" name="GS_APPROVISIONNEMENT_PK">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>GS_APPROVISIONNEMENT_PK</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:57 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E0FF80CE-599D-8AD0-BECA-CF1400CCF7DC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="396F10E5-4AE8-68E6-5806-7E2727198845" schemaObject="4004E999-0D93-67E7-ABFB-7E10EC929647" name="GS_APPROVISIONNEMENT_PK">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>GS_APPROVISIONNEMENT_PK</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:57 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E0FF80CE-599D-8AD0-BECA-CF1400CCF7DC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="S-base" id="7D1719EA-114C-326E-9B96-C52086304A9E" version="3.5">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:02:38 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>7D1719EA-114C-326E-9B96-C52086304A9E</designId>
+</OSDM_Design>

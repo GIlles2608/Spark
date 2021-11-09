@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="GS_ANIMAUX" directorySegmentName="seg_0" id="CE85E6C5-4455-E99D-8469-9F6ED6802CC4">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:49 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<schemaObject>4004E999-0D93-67E7-ABFB-7E10EC929647</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>C2F59D9A-1062-0E60-F398-3A8F00C0BE2A</segment>
+<tableSpace>E8D43ACF-00BB-25A5-18A9-0442B901F203</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="PRENOM" id="2054297D-F06E-42B1-4B98-F9DC617E0609">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:49 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID_A" id="3C4B1574-3778-D061-AFA2-151756F3E530">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:49 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CLASSE" id="5318A69F-1775-8310-00CE-DDB061999528">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:49 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NOM" id="710B96E7-C575-E8BA-1424-8275B6D71049">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:49 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="SEXE" id="7334B33E-61A8-18A9-0B63-8D7E19A241DA">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:49 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="GS_ANIMAUX_PK" id="6C34A167-E1E0-1718-8615-1489073875F4">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:49 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<schemaObject>4004E999-0D93-67E7-ABFB-7E10EC929647</schemaObject>
+<segment>DEE14A31-69AB-EDE6-A67D-B0FEECBD25B5</segment>
+<tableSpace>E8D43ACF-00BB-25A5-18A9-0442B901F203</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="GS_ANIMAUX_PK" id="F51C4264-F5F4-C996-7154-CC1289E5126B">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:49 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<segment>DEE14A31-69AB-EDE6-A67D-B0FEECBD25B5</segment>
+<tableSpace>E8D43ACF-00BB-25A5-18A9-0442B901F203</tableSpace>
+<existingIndex>6C34A167-E1E0-1718-8615-1489073875F4</existingIndex>
+<indexSegment>DEE14A31-69AB-EDE6-A67D-B0FEECBD25B5</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

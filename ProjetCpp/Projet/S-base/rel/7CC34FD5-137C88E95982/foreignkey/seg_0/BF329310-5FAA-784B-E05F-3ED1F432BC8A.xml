@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="BF329310-5FAA-784B-E05F-3ED1F432BC8A" containerWithKeyObject="3EFE8A43-C776-74FE-8C4B-D295FCCCB40D" localFKIndex="42DF1A0C-135C-A750-141E-68BA7D2B43FF" name="GS_ALIMENTER_FK_02">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>GS_ALIMENTER_FK_02</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:40 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<referredTableLongName>SYSTEM.GS_ANIMAUX</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>CE85E6C5-4455-E99D-8469-9F6ED6802CC4</referredTableID>
+<keyObject>F51C4264-F5F4-C996-7154-CC1289E5126B</keyObject>
+<referredKeyID>F51C4264-F5F4-C996-7154-CC1289E5126B</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_A</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

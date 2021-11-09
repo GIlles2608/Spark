@@ -1,0 +1,111 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="982DB125-2419-7AC0-5072-73046E333816" schemaObject="4004E999-0D93-67E7-ABFB-7E10EC929647" name="GS_GERER">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>GS_GERER</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:14 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CIN_PERSONNELS" id="90E88CE3-C208-307A-5CC5-C83D3265E560">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>GS_GERER</sourceObjSchema>
+<sourceObjName>CIN_PERSONNELS</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:14 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="95208A0E-7F1F-5412-FA63-B2D29297ECB8" referredColumn="04F0D4A9-FEA1-61CD-9045-80A2B83B8F35"/>
+</associations>
+</Column>
+<Column name="ID_APPR" id="C690F7F1-AFBF-D43F-A114-89A8FB3B638C">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>GS_GERER</sourceObjSchema>
+<sourceObjName>ID_APPR</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:14 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4C0EC43D-8AF7-270B-1CE8-D28E851472D5" referredColumn="E0FF80CE-599D-8AD0-BECA-CF1400CCF7DC"/>
+</associations>
+</Column>
+<Column name="DATE_HEURE" id="2D6779F1-0EC3-8B32-68BA-40C86BAB4119">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>GS_GERER</sourceObjSchema>
+<sourceObjName>DATE_HEURE</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:14 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7A2064FA-8644-2402-91CC-A0DC3F42AACD" name="GS_GERER_PK">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>GS_GERER_PK</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:14 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C690F7F1-AFBF-D43F-A114-89A8FB3B638C"/>
+<colUsage columnID="90E88CE3-C208-307A-5CC5-C83D3265E560"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B040A2C6-1D9B-E1D7-0F2B-8A190A37E5F4" schemaObject="4004E999-0D93-67E7-ABFB-7E10EC929647" name="GS_GERER_PK">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>GS_GERER_PK</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:14 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C690F7F1-AFBF-D43F-A114-89A8FB3B638C"/>
+<colUsage columnID="90E88CE3-C208-307A-5CC5-C83D3265E560"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="88531D89-4AD7-6608-9D66-A290532AD71D" name="GS_GERER_FK_01">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:14 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C690F7F1-AFBF-D43F-A114-89A8FB3B638C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7445E479-38ED-C02A-6428-F513A75014B6" name="GS_GERER_FK_02">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:14 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="90E88CE3-C208-307A-5CC5-C83D3265E560"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

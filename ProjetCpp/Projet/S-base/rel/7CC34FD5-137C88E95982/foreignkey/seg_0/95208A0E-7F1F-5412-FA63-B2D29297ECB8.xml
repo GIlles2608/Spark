@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="95208A0E-7F1F-5412-FA63-B2D29297ECB8" containerWithKeyObject="982DB125-2419-7AC0-5072-73046E333816" localFKIndex="7445E479-38ED-C02A-6428-F513A75014B6" name="GS_GERER_FK_02">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>GS_GERER_FK_02</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:14 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<referredTableLongName>SYSTEM.GS_PERSONNELS</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>F8D0814B-52CA-D256-82E5-F49AF3D260D7</referredTableID>
+<keyObject>11FD7161-A57A-553D-AE9B-EF3823A97FBD</keyObject>
+<referredKeyID>11FD7161-A57A-553D-AE9B-EF3823A97FBD</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>CIN</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

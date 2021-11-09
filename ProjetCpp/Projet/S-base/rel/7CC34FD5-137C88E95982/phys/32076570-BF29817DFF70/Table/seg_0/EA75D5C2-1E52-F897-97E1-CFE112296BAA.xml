@@ -1,0 +1,49 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="GS_APPROVISIONNEMENT" directorySegmentName="seg_0" id="EA75D5C2-1E52-F897-97E1-CFE112296BAA">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:57 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<schemaObject>4004E999-0D93-67E7-ABFB-7E10EC929647</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>C2F59D9A-1062-0E60-F398-3A8F00C0BE2A</segment>
+<tableSpace>E8D43ACF-00BB-25A5-18A9-0442B901F203</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="CLASSE" id="BA3B4B2C-ACB0-C19E-1DCC-D1A594E0C33B">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:57 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID_APP" id="E0FF80CE-599D-8AD0-BECA-CF1400CCF7DC">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:57 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="GS_APPROVISIONNEMENT_PK" id="396F10E5-4AE8-68E6-5806-7E2727198845">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:57 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<schemaObject>4004E999-0D93-67E7-ABFB-7E10EC929647</schemaObject>
+<segment>DEE14A31-69AB-EDE6-A67D-B0FEECBD25B5</segment>
+<tableSpace>E8D43ACF-00BB-25A5-18A9-0442B901F203</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="GS_APPROVISIONNEMENT_PK" id="14E6BB65-D54D-9B9B-AFC5-67EC20DF9220">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:57 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<segment>DEE14A31-69AB-EDE6-A67D-B0FEECBD25B5</segment>
+<tableSpace>E8D43ACF-00BB-25A5-18A9-0442B901F203</tableSpace>
+<existingIndex>396F10E5-4AE8-68E6-5806-7E2727198845</existingIndex>
+<indexSegment>DEE14A31-69AB-EDE6-A67D-B0FEECBD25B5</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

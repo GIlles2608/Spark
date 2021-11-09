@@ -1,0 +1,64 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="GS_CLIENTS" directorySegmentName="seg_0" id="981DA770-66F9-9933-D610-7A978BBE0B6D">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:05 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<schemaObject>4004E999-0D93-67E7-ABFB-7E10EC929647</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>C2F59D9A-1062-0E60-F398-3A8F00C0BE2A</segment>
+<tableSpace>E8D43ACF-00BB-25A5-18A9-0442B901F203</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="NOM" id="0B7842F7-865A-1340-C056-ED7C420B10A1">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:05 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PRENOM" id="84734D1D-C2D9-A564-6E33-CD2E4B51FB37">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:05 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CIN" id="96736269-5DEA-E66E-7910-743E5547A18E">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:05 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TELEPHONE" id="ACB3C822-4E9D-CF28-24E0-B68DA74D05F3">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:05 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DATE_NAISSANCE" id="ACDB367C-D7EA-34D2-0E89-25C724CF7DCD">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:05 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="GS_CLIENTS_PK" id="9CD2874C-FB62-0832-973C-4BE5FA99123A">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:06 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<schemaObject>4004E999-0D93-67E7-ABFB-7E10EC929647</schemaObject>
+<segment>DEE14A31-69AB-EDE6-A67D-B0FEECBD25B5</segment>
+<tableSpace>E8D43ACF-00BB-25A5-18A9-0442B901F203</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="GS_CLIENTS_PK" id="E9A56211-56B0-A092-AF91-A520DDCD0902">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:06 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<segment>DEE14A31-69AB-EDE6-A67D-B0FEECBD25B5</segment>
+<tableSpace>E8D43ACF-00BB-25A5-18A9-0442B901F203</tableSpace>
+<existingIndex>9CD2874C-FB62-0832-973C-4BE5FA99123A</existingIndex>
+<indexSegment>DEE14A31-69AB-EDE6-A67D-B0FEECBD25B5</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>

@@ -1,0 +1,110 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3EFE8A43-C776-74FE-8C4B-D295FCCCB40D" schemaObject="4004E999-0D93-67E7-ABFB-7E10EC929647" name="GS_ALIMENTER">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>GS_ALIMENTER</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:39 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CIN_PERSONNEL" id="BB27F019-89B9-4506-C818-144C29672811">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>GS_ALIMENTER</sourceObjSchema>
+<sourceObjName>CIN_PERSONNEL</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:39 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="01029F6C-1246-9D32-A37B-50384392CE17" referredColumn="04F0D4A9-FEA1-61CD-9045-80A2B83B8F35"/>
+</associations>
+</Column>
+<Column name="CIN_ANIMAUX" id="5218EE27-7DD9-1605-1ADB-D708EE40A15D">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>GS_ALIMENTER</sourceObjSchema>
+<sourceObjName>CIN_ANIMAUX</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:40 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BF329310-5FAA-784B-E05F-3ED1F432BC8A" referredColumn="3C4B1574-3778-D061-AFA2-151756F3E530"/>
+</associations>
+</Column>
+<Column name="DATE_NUTRITION" id="6054B99B-0BCA-4C70-5660-A209FC61F690">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>GS_ALIMENTER</sourceObjSchema>
+<sourceObjName>DATE_NUTRITION</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:40 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8907A3DE-FE29-F16D-28B1-B1AE6B7AD027" name="GS_ALIMENTER_PK">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>GS_ALIMENTER_PK</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:40 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BB27F019-89B9-4506-C818-144C29672811"/>
+<colUsage columnID="5218EE27-7DD9-1605-1ADB-D708EE40A15D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="134D0DE0-7ACE-D2A7-CA24-5A7EE06CCDEE" schemaObject="4004E999-0D93-67E7-ABFB-7E10EC929647" name="GS_ALIMENTER_PK">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>GS_ALIMENTER_PK</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:40 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BB27F019-89B9-4506-C818-144C29672811"/>
+<colUsage columnID="5218EE27-7DD9-1605-1ADB-D708EE40A15D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="EA978024-6DDE-4FB6-15F2-3EE10C0779E4" name="GS_ALIMENTER_FK">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:40 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BB27F019-89B9-4506-C818-144C29672811"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="42DF1A0C-135C-A750-141E-68BA7D2B43FF" name="GS_ALIMENTER_FK_02">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:11:40 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5218EE27-7DD9-1605-1ADB-D708EE40A15D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

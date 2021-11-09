@@ -1,0 +1,179 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F8D0814B-52CA-D256-82E5-F49AF3D260D7" schemaObject="4004E999-0D93-67E7-ABFB-7E10EC929647" name="GS_PERSONNELS">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>GS_PERSONNELS</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:22 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CIN" id="04F0D4A9-FEA1-61CD-9045-80A2B83B8F35">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>GS_PERSONNELS</sourceObjSchema>
+<sourceObjName>CIN</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:22 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOM" id="06C2E849-5640-873B-2E50-A0B2656A4FC1">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>GS_PERSONNELS</sourceObjSchema>
+<sourceObjName>NOM</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:22 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PRENOM" id="F91ECB5F-3DE0-C48C-5E89-E5F4F245D884">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>GS_PERSONNELS</sourceObjSchema>
+<sourceObjName>PRENOM</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:22 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DATE_NAISSANCE" id="8E47AFC1-2691-2A10-C48B-52AE413535F3">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>GS_PERSONNELS</sourceObjSchema>
+<sourceObjName>DATE_NAISSANCE</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:22 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="AGE" id="F1381BA5-11C9-25E0-7802-0A16196996C2">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>GS_PERSONNELS</sourceObjSchema>
+<sourceObjName>AGE</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:22 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TEL" id="890EDE79-1B86-BBE9-1BE5-71E6995EAD50">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>GS_PERSONNELS</sourceObjSchema>
+<sourceObjName>TEL</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:22 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="VILLE" id="294B51D8-E9ED-1480-E2B1-784444700257">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>GS_PERSONNELS</sourceObjSchema>
+<sourceObjName>VILLE</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:22 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<ownDataTypeParameters>20 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ADRESSE" id="0974C80C-CCD8-C8C6-8AC8-BEFCB26514FD">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>GS_PERSONNELS</sourceObjSchema>
+<sourceObjName>ADRESSE</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:22 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 BYTE</dataTypeSize>
+<ownDataTypeParameters>40 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CIN_ADMIN" id="5DE49D37-DFAE-3C90-2B48-EDAEE758D955">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>GS_PERSONNELS</sourceObjSchema>
+<sourceObjName>CIN_ADMIN</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:22 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="935DC0B1-C137-9CBB-A03F-A1202E80AE10" referredColumn="04F0D4A9-FEA1-61CD-9045-80A2B83B8F35"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="11FD7161-A57A-553D-AE9B-EF3823A97FBD" name="GS_PERSONNELS_PK">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>GS_PERSONNELS_PK</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:22 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="04F0D4A9-FEA1-61CD-9045-80A2B83B8F35"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="86B31D57-11A6-68D5-42EC-C66C0591333C" schemaObject="4004E999-0D93-67E7-ABFB-7E10EC929647" name="PK_PERSONNELS">
+<sourceConnName>S-park</sourceConnName>
+<sourceObjSchema>SYSTEM</sourceObjSchema>
+<sourceObjName>PK_PERSONNELS</sourceObjName>
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:22 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="04F0D4A9-FEA1-61CD-9045-80A2B83B8F35"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E0CB2093-AAA7-7942-E018-5520A7EA9494" name="GS_ADMIN_FK">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:22 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5DE49D37-DFAE-3C90-2B48-EDAEE758D955"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

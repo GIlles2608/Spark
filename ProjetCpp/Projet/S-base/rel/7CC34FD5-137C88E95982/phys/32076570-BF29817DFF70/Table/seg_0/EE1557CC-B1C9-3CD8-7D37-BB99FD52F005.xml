@@ -1,0 +1,71 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="GS_TICKETS" directorySegmentName="seg_0" id="EE1557CC-B1C9-3CD8-7D37-BB99FD52F005">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:30 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<schemaObject>4004E999-0D93-67E7-ABFB-7E10EC929647</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>C2F59D9A-1062-0E60-F398-3A8F00C0BE2A</segment>
+<tableSpace>E8D43ACF-00BB-25A5-18A9-0442B901F203</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="ID_TICKET" id="3C6010F1-023A-CFE8-165B-01DF68E0D3A4">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:30 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CIN_PERSONNELS" id="55FFC11C-9F04-B49A-170C-C84E80A2AE0A">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:30 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DATE_VENTE" id="7EC4B8AB-0368-B944-CDA5-979BC96036F3">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:30 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CIN_CLIENT" id="D484E4EC-1762-3571-F694-7194724331DA">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:30 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="GS_TICKETS_PK" id="F555771F-3FE5-92C4-88B1-C45189A92A55">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:30 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<schemaObject>4004E999-0D93-67E7-ABFB-7E10EC929647</schemaObject>
+<segment>DEE14A31-69AB-EDE6-A67D-B0FEECBD25B5</segment>
+<tableSpace>E8D43ACF-00BB-25A5-18A9-0442B901F203</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="GS_TICKETS_SK_02" id="71BF22A5-ABFA-E524-E2BD-C28D59A67FBA">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:30 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="GS_TICKETS_SK_01" id="A848ACED-17A0-7297-4DE1-E24E5A19B951">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:30 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="GS_TICKETS_PK" id="152FA0CE-EC3A-335E-3533-69D1254780BE">
+<createdBy>PC</createdBy>
+<createdTime>2021-11-02 10:12:30 UTC</createdTime>
+<ownerDesignName>S-base</ownerDesignName>
+<segment>DEE14A31-69AB-EDE6-A67D-B0FEECBD25B5</segment>
+<tableSpace>E8D43ACF-00BB-25A5-18A9-0442B901F203</tableSpace>
+<existingIndex>F555771F-3FE5-92C4-88B1-C45189A92A55</existingIndex>
+<indexSegment>DEE14A31-69AB-EDE6-A67D-B0FEECBD25B5</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>
