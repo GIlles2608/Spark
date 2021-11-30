@@ -1,4 +1,4 @@
-QT       += core gui sql
+QT       += core gui sql charts printsupport serialport multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -10,12 +10,14 @@ CONFIG += c++11
 
 SOURCES += \
     animal.cpp \
+    arduino.cpp \
     connexion.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     animal.h \
+    arduino.h \
     connexion.h \
     mainwindow.h
 

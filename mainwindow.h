@@ -1,8 +1,14 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+#include <QtCharts>
+#include <QChartView>
+#include <QPieSeries>
 
 #include <QMainWindow>
 #include "animal.h"
+#include "arduino.h"
+#include <QSound>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -38,9 +44,13 @@ private slots:
     void on_an_tri_asc_clicked();
 
     void on_an_tri_desc_clicked();
+    void update_label();
+
 
 private:
     Ui::MainWindow *ui;
     animal an;
+    arduino a;
+    QByteArray data;
 };
 #endif // MAINWINDOW_H

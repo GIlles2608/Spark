@@ -7,19 +7,62 @@
 #include <QUrl>
 #include "animal.h"
 #include <QPainter>
+#include <QtPrintSupport/QPrinter>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     refresh();
+    QPieSeries *series = new QPieSeries();
+       QSqlQuery q("select sexe,count(*) from animal group by sexe");
+
+
+        while(q.next())
+        {series->append(q.value(0).toString()+": "+q.value(1).toString(),q.value(1).toInt());}
+       QChart *chart = new QChart();
+       chart->addSeries(series);
+       chart->setTitle("Statistiques");
+       chart->setBackgroundBrush(Qt::transparent);
+       QChartView *chartview = new QChartView(chart);
+       chartview->setRenderHint(QPainter::Antialiasing);
+       chartview->setParent(ui->horizontalFrame);
+       chartview->resize(400,300);
+
+       chart->setAnimationOptions(QChart::AllAnimations);
+       chart->legend()->setVisible(true);
+       chart->legend()->setAlignment(Qt::AlignRight);
+       series->setLabelsVisible(true);
+       int ret=a.connect_arduino();
+             switch (ret) {
+             case(0):qDebug()<<"arduino is available and connected to :"<<a.getarduino_port_name();
+                 break;
+             case(1):qDebug()<<"arduino is available but not connected to :"<<a.getarduino_port_name();
+                 break;
+             case(-1):qDebug()<<"arduino is not available";
+             }
+       QObject::connect(a.getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+void MainWindow::update_label()
+{
+data=a.read_from_arduino();
 
+if (data == "1")
+  {
+    a.write_to_arduino("a");
+    QSound::play("C:/Users/MSI/Desktop/cooper_fulleon_sounder_tone_25.wav");
+    QMessageBox::information (nullptr, QObject::tr("alert"),
+                QObject::tr("\n un animal s'est sauvé !\n"), QMessageBox::Ok);
+     a.write_to_arduino("b");
+}
+
+}
 void MainWindow::refresh(){
 
        //stackedWidget Animal Ajout  done
@@ -28,18 +71,16 @@ void MainWindow::refresh(){
        ui->tabAnimal->setModel(an.afficher());
 
        // affichage statistiques dans tab stat
-       ui->an_statTable->setModel(an.afficherStat());
+      // ui->an_statTable->setModel(an.afficherStat());
 
            //Controle saisie du formulaire ajout Animal :
        ui->an_id_add->setValidator(new QIntValidator(0,9999999,this));
        ui->an_nom_add->setValidator(new QRegExpValidator( QRegExp("[A-Za-z ]*") , this ));
        ui->an_classe_add->setValidator(new QRegExpValidator( QRegExp("[A-Za-z ]*") , this ));
-
        //Controle saisie du formulaire Modifier  Animal :
        ui->an_id_e->setValidator(new QIntValidator(0,9999999,this));
        ui->an_nom_e->setValidator(new QRegExpValidator( QRegExp("[A-Za-z ]*") , this ));
        ui->an_classe->setValidator(new QRegExpValidator( QRegExp("[A-Za-z ]*") , this ));
-
        // Controlse  saisie affichage du formulaire edit and delete
        ui->an_edit->hide();
        ui->an_delete->hide();
@@ -223,63 +264,63 @@ void MainWindow::on_an_recherche_textChanged(const QString &arg1)
 
 void MainWindow::on_an_imprimer_clicked()
 {
-    QString sexe =ui->an_sexe_stat->text();
-    QDate test = QDate::currentDate();
-    QString dattte = test.toString("yyyy_MM_dd");
-    QPdfWriter pdf("C:/Users/MSI/Desktop/PDF/Animal"+dattte+".pdf");
+    QString strStream;
+                       QTextStream out(&strStream);
 
-                      QPainter painter(&pdf);
-                     int i = 4000;
-                          painter.setPen(Qt::blue);
-                          painter.setFont(QFont("Arial", 30));
-                          painter.drawText(2000,1200,"Statistique Des Animeaux "+sexe);
-                          painter.setPen(Qt::black);
-                          painter.setFont(QFont("Arial", 50));
-                         // painter.drawText(1100,2000,afficheDC);
-                          painter.drawRect(1500,200,7300,2600);
-                          //painter.drawPixmap(QRect(7600,70,2000,2600),QPixmap("C:/Users/RH/Desktop/projecpp/image/logopdf.png"));
-                          painter.drawRect(0,3000,9600,500);
-                          painter.setFont(QFont("Arial", 9));
-                          painter.drawText(300,3300,"SEXE");
-                          painter.drawText(2300,3300,"TOTAL");
-                          painter.drawText(4300,3300,"ANIMEAU");
-                          painter.drawText(6300,3300,"DATE AJOUT");
+                        const int rowCount = ui->tabAnimal->model()->rowCount();
+                        const int columnCount = ui->tabAnimal->model()->columnCount();
+                       out <<  "<html>\n"
+                       "<head>\n"
+                                        "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+                                        <<  QString("<title>%1</title>\n").arg("strTitle")
+                                        <<  "</head>\n"
+                                        "<body bgcolor=#ffffff link=#5000A0>\n"
 
 
 
-                          QSqlQuery query;
-                          QString noms = "";
-                          QString dates = "";
-                          query.prepare("select nom,date_ajout from animal where sexe=:sexe");
-                          query.bindValue(":sexe",ui->an_sexe_stat->text());
-                          query.exec();
-                          while (query.next())
-                          {
-                            noms = noms +" "+ query.value(0).toString();
-                            dates = dates +" "+  query.value(1).toString();
-                          }
-                          painter.drawText(300,i,sexe);
-                          painter.drawText(2300,i,ui->an_total->text());
-                          painter.drawText(4300,i,noms);
-                          painter.drawText(6300,i,dates);
-                         i = i +500;
-                          int reponse = QMessageBox::question(this, "Génerer PDF", "<PDF Enregistré>...Vous Voulez Affichez Le PDF ?", QMessageBox::Yes |  QMessageBox::No);
-                              if (reponse == QMessageBox::Yes)
-                              {
-                                  QDesktopServices::openUrl(QUrl::fromLocalFile("C:/Users/MSI/Desktop/PDF/Animal"+dattte+".pdf"));
+                                        "<center> <H1>Liste des animaux</H1></br></br><table border=1 cellspacing=0 cellpadding=2>\n";
 
-                                  painter.end();
-                              }
-                              if (reponse == QMessageBox::No)
-                              {
-                                   painter.end();
-                              }
+                                    // headers
+                                    out << "<thead><tr bgcolor=#f0f0f0> <th>Numero</th>";
+                                    out<<"<cellspacing=10 cellpadding=3>";
+                                    for (int column = 0; column < columnCount; column++)
+                                        if (!ui->tabAnimal->isColumnHidden(column))
+                                            out << QString("<th>%1</th>").arg(ui->tabAnimal->model()->headerData(column, Qt::Horizontal).toString());
+                                    out << "</tr></thead>\n";
+
+                                    // data table
+                                    for (int row = 0; row < rowCount; row++) {
+                                        out << "<tr> <td bkcolor=0>" << row+1 <<"</td>";
+                                        for (int column = 0; column < columnCount; column++) {
+                                            if (!ui->tabAnimal->isColumnHidden(column)) {
+                                                QString data = ui->tabAnimal->model()->data(ui->tabAnimal->model()->index(row, column)).toString().simplified();
+                                                out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+                                            }
+                                        }
+                                        out << "</tr>\n";
+                                    }
+                                    out <<  "</table> </center>\n"
+                                        "</body>\n"
+                                        "</html>\n";
+
+                              QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Sauvegarder en PDF", QString(), "*.pdf");
+                                if (QFileInfo(fileName).suffix().isEmpty()) { fileName.append(".pdf"); }
+
+                               QPrinter printer (QPrinter::PrinterResolution);
+                                printer.setOutputFormat(QPrinter::PdfFormat);
+                               printer.setPaperSize(QPrinter::A4);
+                              printer.setOutputFileName(fileName);
+
+                               QTextDocument doc;
+                                doc.setHtml(strStream);
+                                doc.setPageSize(printer.pageRect().size()); // This is necessary if you want to hide the page number
+                                doc.print(&printer);
 
 }
 
 void MainWindow::on_an_statTable_activated(const QModelIndex &index)
 {
-    QString val=ui->an_statTable->model()->data(index).toString();
+    /*QString val=ui->an_statTable->model()->data(index).toString();
         QSqlQuery qry;
         qry.prepare("Select count(*) from animal where  sexe='"+val+"'");
         if(qry.exec())
@@ -290,7 +331,7 @@ void MainWindow::on_an_statTable_activated(const QModelIndex &index)
                         ui->an_sexe_stat->setText(val);
 
                     }
-        }
+        }*/
 }
 
 void MainWindow::on_an_tri_asc_clicked()
