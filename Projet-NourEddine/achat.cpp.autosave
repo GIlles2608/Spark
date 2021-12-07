@@ -1,0 +1,23 @@
+#include "achat.h"
+
+achat::achat()
+{
+
+}
+achat::achat(int id,int ticket_id,int quantite,int total , int personne_id,int etat)
+{
+    this->id=id;
+    this->ticket_id=ticket_id;
+    this->quantite=quantite;
+    this->total=total;
+    this->personne_id=personne_id;
+    this->etat=etat; // achat validé ou bien annulé
+}
+int achat::get_id(){return id;}
+int achat::get_t_id(){return ticket_id;}
+int achat::getot(){return total;}
+int achat::getquantite(){return quantite;}
+int achat::getp(){return personne_id;}
+int achat::getetat(){return etat;}
+
+
