@@ -28,7 +28,7 @@ void animal::setSexe(QString sexe ){this->sexe=sexe ;}
 bool animal::ajouter()
 {
     QSqlQuery query;
-    query.prepare("INSERT INTO animal (id, nom, classe, date_ajout,sexe) "
+    query.prepare("INSERT INTO ANIMAL (id, nom, classe, date_ajout,sexe) "
                   "VALUES (:id, :nom, :classe, :date_ajout, :sexe)");
     query.bindValue(":id",id);
   query.bindValue(":nom",nom);

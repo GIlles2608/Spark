@@ -27,6 +27,7 @@ void MainWindow::on_admin_login_clicked()
   l.setAdmin(true);
 }
 
+
 void MainWindow::on_pushButton_2_clicked()
 {
     QString username = ui->nom_utilateur->text();
@@ -36,26 +37,36 @@ void MainWindow::on_pushButton_2_clicked()
     {
         login l(username,password);
 
+
         if (l.connecter())
             {
 
               hide();
-              S_park s;
               s.setModal(true);
+              s.setAdmin_active(false);
               s.exec();
             }
         else
             QMessageBox::critical(nullptr, QObject::tr("Failure"),
-                        QObject::tr("Connection echoue! Le mot de passe et le nom d'utilsateur est incorrect.\n"
+                        QObject::tr("Connection echoue! Le mot de passe et le nom d'utilsateur sont incorrects.\n"
                                     "Click Cancel to exit."), QMessageBox::Cancel);
     }
     else
     {
+        login l(username,password);
+
         if((username=="admin")&&(password=="admin"))
         {
             hide();
-            S_park s;
             s.setModal(true);
+            s.setAdmin_active(true);
+            s.exec();
+        }
+        else if(l.connecter())
+        {
+            hide();
+            s.setModal(true);
+            s.setAdmin_active(true);
             s.exec();
         }
         else
@@ -112,3 +123,48 @@ void MainWindow::on_pushButton_5_clicked()
 }
 
 
+
+void MainWindow::on_pushButton_clicked()
+{
+    QString message;
+    QSqlQuery q;
+    QString username = ui->nom_utilateur_3->text();
+    q.prepare("select password from gs_personnels where username =: username");
+    q.bindValue(":username",username);
+      if(q.exec())
+      {
+          while(q.next())
+              message ="votre mot de passe est:" + q.value(0).toString();
+      }
+
+       QString subject = "S-park:Recuperation du mot de passe!";
+
+    Smtp* smtp = new Smtp("gilleskouebou@gmail.com","26082409Madm", "smtp.gmail.com");
+        connect(smtp, SIGNAL(status(QString)), this, SLOT(Mail_Envoyer(QString)));
+
+            smtp->sendMail("gilleskouebou@gmail.com",ui->e_mail_2->text(),subject,message);
+
+
+            ui->stackedWidget->setCurrentIndex(0);
+
+}
+
+
+void MainWindow::Mail_Envoyer(QString status)
+{
+    if(status == "Message sent")
+        QMessageBox::information(nullptr, tr( "Qt Simple SMTP client" ), tr( "Message sent!\n\n" ) );
+    ui->e_mail_2->clear();
+
+
+}
+
+void MainWindow::on_pushButton_6_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(2);
+}
+
+void MainWindow::on_pushButton_8_clicked()
+{
+     ui->stackedWidget->setCurrentIndex(0);
+}

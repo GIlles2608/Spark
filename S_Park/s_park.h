@@ -29,6 +29,8 @@
 #include "animal.h"
 #include "animal.h"
 #include "personnel.h"
+#include "client.h"
+#include "login.h"
 
 
 namespace Ui {
@@ -41,6 +43,11 @@ class S_park : public QDialog
 
 public:
     explicit S_park(QWidget *parent = nullptr);
+    void initialisation();
+    void initialisation_2();
+    void setAdmin_active(bool v){admin_active = v;}
+    bool getAdmin_active(){return admin_active;}
+
     ~S_park();
 
 private slots:
@@ -91,13 +98,13 @@ private slots:
 
     void on_delete_g_clicked();
 
-    void on_t_add_clicked();
+   void on_t_add_3_clicked();
 
     void on_ticketList_activated(const QModelIndex &index);
 
-    void on_t_edit_clicked();
+    void on_t_edit_3_clicked();
 
-    void on_t_delete_clicked();
+    void on_t_delete_3_clicked();
 
     void on_lineEdit_textChanged(const QString &arg1);
 
@@ -125,7 +132,7 @@ private slots:
 
     void on_pb_ajouter_clicked();
 
-    void on_pushButton_2_clicked();
+    void on_pushButton_7_clicked();
 
     void on_pb_modifier_clicked();
 
@@ -156,7 +163,85 @@ private slots:
 
     // void on_comboBox_cin_modi_currentIndexChanged(int index);
 
-     void on_comboBox_cin_modi_activated(int index);
+   // void on_comboBox_cin_modi_activated(int index);
+
+
+     void on_pushButton_3_clicked();
+
+     void on_pushButton_8_clicked();
+
+     void on_Ajout_Employe_clicked();
+
+     void on_Ajout_admin_clicked();
+
+
+     void cin_hide();
+
+     /*stackwidget client-------------------------------------------------------*/
+     void on_ajoutForm_clicked();
+
+
+   //  void on_pushButton_clicked();
+
+
+     void on_tableFournisseur_activated(const QModelIndex &index);
+
+     void on_c_supprimer_clicked();
+
+     void on_c_ajouterBtn_clicked();
+
+     void on_c_recherche_textChanged(const QString &arg1);
+
+     void on_c_modifier_clicked();
+
+     void on_tabClient_activated(const QModelIndex &index);
+
+    // void on_pushButton_2_clicked();
+
+     void on_comboTri_currentIndexChanged(int index);
+
+     void on_c_ajouterBtn_2_clicked();
+
+     void on_Switch_2_English_clicked();
+
+    // void on_pushButton_5_clicked();
+
+     void on_comboTri_2_currentIndexChanged(int index);
+
+     void on_c_recherche_2_textChanged(const QString &arg1);
+
+     void on_c_modifier_2_clicked();
+
+     void on_tabClient_2_activated(const QModelIndex &index);
+
+     void on_c_supprimer_2_clicked();
+
+     void on_pushButton_6_clicked();
+
+     void on_ajoutForm_2_clicked();
+
+
+
+     void on_Ajout_admin_2_clicked();
+
+     void on_Ajout_Employe_2_clicked();
+
+
+
+
+
+
+     void on_tableView_activated(const QModelIndex &index);
+
+     void on_Ok_modi_password_clicked();
+
+     void on_modifier_password_clicked();
+
+     void on_Ok_modi_password_2_clicked();
+
+     void on_comboBox_cin_modi_activated(const QString &arg1);
+
+
 
 
 private:
@@ -168,7 +253,9 @@ private:
      QChartView *chartView ;
      Personnel P;
      QStringList files;
-
+     client f;
+     login l;
+     bool admin_active;
 };
 
 #endif // S_PARK_H

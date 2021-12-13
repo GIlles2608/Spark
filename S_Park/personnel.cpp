@@ -11,6 +11,7 @@ Personnel::Personnel()
     this->adresse = " ";
     this->age = 0;
     this->tel = 0;
+    this->admin = false;
    // this->cin_admin = 0;
 }
 
@@ -27,12 +28,46 @@ Personnel::Personnel(QString n,QString p,int c,QDate d,QString v,QString ad,int 
   //  this->cin_admin = ca;
 }
 
+Personnel::Personnel(QString n,QString p,int c,QDate d,QString v,QString ad,int ag,int t,int ca)
+{
+    this->nom = n;
+    this->prenom = p;
+    this->cin = c;
+    this->date_naissance = d;
+    this->ville = v;
+    this->adresse = ad;
+    this->age = ag;
+    this->tel = t;
+    this->cin_admin = ca;
+}
 
 bool Personnel::ajouter()
 {
  QSqlQuery query;
  QString res = QString::number(cin);
-// QString res_a = QString::number(cin_admin);
+ QString ag_res = QString::number(age);
+ QString t_res = QString::number(tel);
+ //prepare() prend la requete en parametre pour la preparer a l'execution;
+
+   query.prepare("insert into gs_personnels(nom,prenom,cin,date_naissance,age,ville,adresse,telephone)""values(:nom,:prenom,:cin,:date_naissance,:age,:ville,:adresse,:tel)");
+ //creation des variable liees;
+   query.bindValue(":cin",res);
+   query.bindValue(":nom",nom);
+   query.bindValue(":prenom",prenom);
+   query.bindValue(":date_naissance",date_naissance);
+   query.bindValue(":age",ag_res);
+   query.bindValue(":ville",ville);
+   query.bindValue(":adresse",adresse);
+   query.bindValue(":tel",t_res);
+
+   return query.exec(); //envoi la requete pour l'executer
+}
+
+bool Personnel::ajouter_Admin()
+{
+ QSqlQuery query;
+ QString res = QString::number(cin);
+ QString res_a = QString::number(cin_admin);
  QString ag_res = QString::number(age);
  QString t_res = QString::number(tel);
  //prepare() prend la requete en parametre pour la preparer a l'execution;
@@ -47,7 +82,7 @@ bool Personnel::ajouter()
    query.bindValue(":ville",ville);
    query.bindValue(":adresse",adresse);
    query.bindValue(":tel",t_res);
- //  query.bindValue(":cin_admin",res_a);
+   query.bindValue(":cin_admin",res_a);
 
    return query.exec(); //envoi la requete pour l'executer
 }
@@ -55,7 +90,7 @@ bool Personnel::ajouter()
 QSqlQueryModel *Personnel::afficher()
 {
   QSqlQueryModel * model = new QSqlQueryModel();
-   model->setQuery("select * from gs_personnels");
+   model->setQuery("select cin,nom,prenom,date_naissance,age,telephone,adresse,ville,cin_admin from gs_personnels");
    model->setHeaderData(0,Qt::Horizontal,QObject::tr("CIN"));
    model->setHeaderData(1,Qt::Horizontal,QObject::tr("Nom"));
    model->setHeaderData(2,Qt::Horizontal,QObject::tr("Prenom"));
@@ -73,7 +108,6 @@ bool Personnel::modifier(int cin)
 {
   QSqlQuery query;
   QString res = QString::number(cin);
-  QString res_a = QString::number(cin_admin);
   QString ag_res = QString::number(age);
   QString t_res = QString::number(tel);
   query.prepare("Update gs_personnels set nom=:nom,prenom=:prenom,date_naissance=:date_naissance,age=:age,ville=:ville,adresse=:adresse,telephone=:tel where cin=:cin");
@@ -85,7 +119,28 @@ bool Personnel::modifier(int cin)
   query.bindValue(":ville",ville);
   query.bindValue(":adresse",adresse);
   query.bindValue(":tel",t_res);
- // query.bindValue(":cin_admin",res_a);
+
+
+  return query.exec();
+}
+
+bool Personnel::modifier_Admin(int cin)
+{
+  QSqlQuery query;
+  QString res = QString::number(cin);
+  QString res_a = QString::number(cin_admin);
+  QString ag_res = QString::number(age);
+  QString t_res = QString::number(tel);
+  query.prepare("Update gs_personnels set nom=:nom,prenom=:prenom,date_naissance=:date_naissance,age=:age,ville=:ville,adresse=:adresse,telephone=:tel,cin_admin=:cin_admin where cin=:cin");
+  query.bindValue(":cin",res);
+  query.bindValue(":nom",nom);
+  query.bindValue(":prenom",prenom);
+  query.bindValue(":date_naissance",date_naissance);
+  query.bindValue(":age",ag_res);
+  query.bindValue(":ville",ville);
+  query.bindValue(":adresse",adresse);
+  query.bindValue(":tel",t_res);
+  query.bindValue(":cin_admin",res_a);
 
   return query.exec();
 }
@@ -105,7 +160,7 @@ QSqlQueryModel *Personnel::rechercher(QString q)
 {
     QString res= QString::number(cin);
     QSqlQueryModel *model=new QSqlQueryModel();
-     model->setQuery("SELECT * FROM gs_personnels  WHERE nom like '%"+q+"%'" );
+     model->setQuery("SELECT cin,nom,prenom,date_naissance,age,telephone,adresse,ville,cin_admin FROM gs_personnels  WHERE nom like '%"+q+"%' or cin like '%"+q+"%' or prenom like '%"+q+"%' or ville like '%"+q+"%' ");
 
      return model;
 }

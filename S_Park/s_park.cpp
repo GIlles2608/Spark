@@ -64,15 +64,24 @@ S_park::S_park(QWidget *parent) :
        ui->t_guichet_id_add_3->setModel(g.affichercatId());
        // Les lineEdit + buttons invisibles :
        hideElements();
-
-
+       cin_hide();
        ui->tableView->setModel(P.afficher());
        ui->comboBox_supp->setModel(P.afficher());
        ui->comboBox_cin_modi->setModel(P.afficher());
        ui->cin->setValidator(new QIntValidator(0,9999999,this));
-      // ui->cin_admin->setValidator(new QIntValidator(0,9999999,this));
+
+       ui->cin_A->setValidator(new QIntValidator(0,9999999,this));
        ui->telephone->setValidator(new QIntValidator(0,99999999,this));
        ui->telephone_2->setValidator(new QIntValidator(0,99999999,this));
+       ui->nouveau_mot_de_passe->setEchoMode(QLineEdit::Password);
+       ui->Nou_mot_de_passe_confirm->setEchoMode(QLineEdit::Password);
+       ui->mot_de_passe_2->setEchoMode(QLineEdit::Password);
+
+
+       initialisation_2(); // methode initialisation hide buttons + clear lineedits + hide lineedits + affichage des tableaux ENGLISH STYLE
+
+       initialisation(); // methode initialisation hide buttons + clear lineedits + hide lineedits + affichage des tableaux
+
 }
 
 S_park::~S_park()
@@ -85,46 +94,64 @@ S_park::~S_park()
 
 void S_park::on_employer_clicked()
 {
-  ui->stackedWidget_Park->setCurrentIndex(0);
+
+  if(admin_active==false)
+  {
+      QMessageBox::warning(nullptr, QObject::tr("Error"),
+                  QObject::tr("Aces refuser.\n" "Vous ne disposez pas des droit d'administrateur \n"
+                              "Click Cancel to exit."), QMessageBox::Cancel);
+  }
+  else
+     ui->stackedWidget_Park->setCurrentIndex(1);
 }
 
 void S_park::on_aniamaux_clicked()
 {
-   ui->stackedWidget_Park->setCurrentIndex(1);
+   ui->stackedWidget_Park->setCurrentIndex(2);
 }
 
 void S_park::on_clients_clicked()
 {
- // ui->stackedWidget->setcurentIndex(0);
+   ui->stackedWidget_Park->setCurrentIndex(3);
 }
 
 void S_park::on_Guichet_2_clicked()
 {
-    ui->stackedWidget_Park->setCurrentIndex(2);
+    ui->stackedWidget_Park->setCurrentIndex(4);
 }
 
 void S_park::on_tickets_clicked()
 {
-    ui->stackedWidget_Park->setCurrentIndex(3);
+    ui->stackedWidget_Park->setCurrentIndex(5);
 }
 
 void S_park::on_acahts_tickets_clicked()
 {
-    ui->stackedWidget_Park->setCurrentIndex(4);
+    ui->stackedWidget_Park->setCurrentIndex(6);
 }
 
 void S_park::on_achats_clicked()
 {
-    ui->stackedWidget_Park->setCurrentIndex(5);
+    ui->stackedWidget_Park->setCurrentIndex(7);
 }
 
 
 void S_park::on_approvisionement_clicked()
 {
-
+    ui->stackedWidget_Park->setCurrentIndex(8);
 }
 
 
+
+void S_park::on_pushButton_3_clicked()
+{
+    ui->stackedWidget_2->setCurrentIndex(0);
+}
+
+void S_park::on_pushButton_8_clicked()
+{
+     ui->stackedWidget_2->setCurrentIndex(1);
+}
 
 
 /*--------------------------------------GESTION CLIENT------------------------------*/
@@ -552,7 +579,7 @@ void  S_park::on_delete_g_clicked()
 // //////////////////////////////////// menu /////////////////////////////////////
 // menu page 1  gestion ticket
 
-void S_park::on_t_add_clicked()
+void S_park::on_t_add_3_clicked()
 {
  // on va prendre les values saisies par l'utilisateur
     int id = ui->t_id_add_3->text().toInt();
@@ -616,7 +643,7 @@ void S_park::on_ticketList_activated(const QModelIndex &index)
         }
 }
 
-void S_park::on_t_edit_clicked()
+void S_park::on_t_edit_3_clicked()
 {
     // on va prendre les values saisies par l'utilisateur
     int id= ui->t_id_e_3->text().toInt();
@@ -681,7 +708,7 @@ void S_park::hideElements(){
 
 }
 
-void S_park::on_t_delete_clicked()
+void S_park::on_t_delete_3_clicked()
 {
     int id = ui->t_id_e_3->text().toInt();
     bool test  = t.supprimer(id);
@@ -869,11 +896,17 @@ chartView->show();
 
 /*--------------------------------------GESTION PERSONNEL------------------------------*/
 
+void S_park::cin_hide()
+{
+    ui->cin_A->hide();
+    ui->cin_A_2->hide();
+    ui->label_Password->hide();
+}
 
 void S_park::on_pb_ajouter_clicked()
 {
     int cin = ui->cin->text().toInt();
-   // int cin_admin = ui->cin_admin->text().toInt();
+    int cin_A = ui->cin_A->text().toInt();
     QString nom = ui->nom->text();
     QString prenom = ui->prenom->text();
     QDate date_naissance = ui->date_naissance->date();
@@ -884,25 +917,70 @@ void S_park::on_pb_ajouter_clicked()
     QDate d ;
     //d.currentDate().year(); date_naissance.year();
 
-    Personnel P(nom,prenom,cin,date_naissance,ville,adresse,age,tel);
-     bool test = P.ajouter();
-    if(ui->nom->text().isEmpty()||ui->nom->text().isEmpty()||ui->cin->text().isEmpty()||age!=(d.currentDate().year()-date_naissance.year()))
+    if(P.getAdmin()==false)
     {
-        QMessageBox::warning(nullptr, QObject::tr("Error"),
-                    QObject::tr("Ajout non effectué.\n" "Entrer le nom,le prenom,la cin ou verifier la cohesion entre la date de naissance et l'age \n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+        Personnel P(nom,prenom,cin,date_naissance,ville,adresse,age,tel);
+
+         bool test = P.ajouter();
+        if(ui->nom->text().isEmpty()||ui->nom->text().isEmpty()||ui->cin->text().isEmpty()||age!=(d.currentDate().year()-date_naissance.year()))
+        {
+            QMessageBox::warning(nullptr, QObject::tr("Error"),
+                        QObject::tr("Ajout non effectué.\n" "Entrer le nom,le prenom,la cin ou verifier la cohesion entre la date de naissance et l'age \n"
+                                    "Click Cancel to exit."), QMessageBox::Cancel);
+        }
+        else if(admin_active==false)
+        {
+            QMessageBox::warning(nullptr, QObject::tr("Error"),
+                        QObject::tr("Ajout non effectué.\n" "Vous ne disposez pas des droit pour cette ajout \n"
+                                    "Click Cancel to exit."), QMessageBox::Cancel);
+        }
+       else if(test)
+        {
+            QMessageBox::information(nullptr, QObject::tr("ok"),
+                        QObject::tr("Employé ajouter.\n"
+                                    "Click Cancel to exit."), QMessageBox::Cancel);
+        }
+        else
+            QMessageBox::critical(nullptr,QObject::tr("Not ok"),
+            QObject::tr("Ajout non effectué. \n"
+                        "Click cancel to exit."),QMessageBox::Cancel);
     }
-   else if(test)
+    else
     {
-        QMessageBox::information(nullptr, QObject::tr("ok"),
-                    QObject::tr("Ajout effectué.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
+        Personnel P(nom,prenom,cin,date_naissance,ville,adresse,age,tel,cin_A);
+
+         bool test = P.ajouter_Admin();
+        if(ui->nom->text().isEmpty()||ui->nom->text().isEmpty()||ui->cin->text().isEmpty()||age!=(d.currentDate().year()-date_naissance.year()))
+        {
+            QMessageBox::warning(nullptr, QObject::tr("Error"),
+                        QObject::tr("Ajout non effectué.\n" "Entrer le nom,le prenom,la cin ou verifier la cohesion entre la date de naissance et l'age \n"
+                                    "Click Cancel to exit."), QMessageBox::Cancel);
+        }
+        else if(admin_active==false)
+        {
+            QMessageBox::warning(nullptr, QObject::tr("Error"),
+                        QObject::tr("Ajout non effectué.\n" "Vous ne disposez pas des droit pour cette ajout \n"
+                                    "Click Cancel to exit."), QMessageBox::Cancel);
+        }
+       else if(test)
+        {
+            QMessageBox::information(nullptr, QObject::tr("ok"),
+                        QObject::tr("administrateur ajouter.\n"
+                                    "Click Cancel to exit."), QMessageBox::Cancel);
+        }
+        else
+            QMessageBox::critical(nullptr,QObject::tr("Not ok"),
+            QObject::tr("Ajout non effectué. \n"
+                        "Click cancel to exit."),QMessageBox::Cancel);
+    }
+
+
          ui->comboBox_supp->setModel(P.afficher());
          ui->comboBox_cin_modi->setModel(P.afficher());
          ui->tableView->setModel(P.afficher());
 
             ui->cin->clear();
-            //ui->cin_admin->clear();
+            ui->cin_A->clear();
             ui->nom->clear();
             ui->prenom->clear();
             ui->date_naissance->clear();
@@ -911,15 +989,22 @@ void S_park::on_pb_ajouter_clicked()
             ui->adresse->clear();
             ui->telephone->clear();
 
-
-    }
-    else
-        QMessageBox::critical(nullptr,QObject::tr("Not ok"),
-        QObject::tr("Ajout non effectué. \n"
-                    "Click cancel to exit."),QMessageBox::Cancel);
+     cin_hide();
 }
 
-void S_park::on_pushButton_2_clicked()
+void S_park::on_Ajout_admin_clicked()
+{
+    P.setAdmin(true);
+    ui->cin_A->show();
+}
+
+void S_park::on_Ajout_Employe_clicked()
+{
+    P.setAdmin(false);
+    cin_hide();
+}
+
+void S_park::on_pushButton_7_clicked()
 {
  P.setCin(ui->comboBox_supp->currentText().toInt());
   bool test = P.supprimer(P.getCin());
@@ -933,6 +1018,12 @@ void S_park::on_pushButton_2_clicked()
       ui->comboBox_cin_modi->setModel(P.afficher());
       ui->tableView->setModel(P.afficher());
   }
+  else if(admin_active==false)
+  {
+      QMessageBox::warning(nullptr, QObject::tr("Error"),
+                  QObject::tr("Suppression non effectué.\n" "Vous ne disposez pas des droit pour cette ajout \n"
+                              "Click Cancel to exit."), QMessageBox::Cancel);
+  }
   else
       QMessageBox::critical(nullptr,QObject::tr("Not ok"),
       QObject::tr("Suppresion non effectué. \n"
@@ -940,99 +1031,134 @@ void S_park::on_pushButton_2_clicked()
 
 }
 
+void S_park::on_Ajout_admin_2_clicked()
+{
+
+    P.setAdmin(true);
+    ui->cin_A_2->show();
+}
+
+void S_park::on_Ajout_Employe_2_clicked()
+{
+    P.setAdmin(false);
+    cin_hide();
+}
 
 
 void S_park::on_pb_modifier_clicked()
 {
      P.setCin(ui->comboBox_cin_modi->currentText().toInt());
+     ui->cin_A_2->text() = ui->comboBox_cin_modi->currentText().toInt();
+     P.setAge(ui->age_2->text().toInt());
      QDate d;
+     P.setNom(ui->nom_2->text());
+     P.setPrenom(ui->prenom_2->text());
+     P.setDate(ui->date_naissance_2->date());
+     P.setVille(ui->ville_2->text());
+     P.setAdresse(ui->adresse_2->text());
+     P.setTel(ui->telephone_2->text().toInt());
+     P.setCin_admin( ui->cin_A_2->text().toInt());
 
-    /* QString nom = ui->nom->text();
-     QString prenom = ui->prenom->text();
-     QDate date_naissance = ui->date_naissance->date();
-     int age = ui->age->text().toInt();
-     QString ville = ui->ville->text();
-     QString adresse = ui->adresse->text();
-     int tel = ui->telephone->text().toInt();*/
-
-    //Personnel P(P.getNom(),P.getPrenom(),P.getCin(),P.getDate(),P.getAge(),P.getVille(),P.getAdresse(),P.getTel());
-
-    //bool test = P.modifier(P.getNom(),P.getPrenom(),P.getCin(),P.getDate(),P.getAge(),P.getVille(),P.getAdresse(),P.getTel());
-
-     bool test = P.modifier(P.getCin());
-     if(P.getAge()!=(d.currentDate().year()-P.getDate().year()))
+     if(P.getAdmin()==false)
      {
-         QMessageBox::warning(nullptr, QObject::tr("Error"),
-                     QObject::tr("Ajout non effectué.\n" "verifier la cohesion entre la date de naissance et l'age \n"
-                                 "Click Cancel to exit."), QMessageBox::Cancel);
+         bool test = P.modifier(P.getCin());
+         if(P.getAge()!=(d.currentDate().year()-P.getDate().year()))
+         {
+             QMessageBox::warning(nullptr, QObject::tr("Error"),
+                         QObject::tr("modification non effectué.\n" "verifier la cohesion entre la date de naissance et l'age \n"
+                                     "Click Cancel to exit."), QMessageBox::Cancel);
+         }
+         else if(admin_active==false)
+         {
+             QMessageBox::warning(nullptr, QObject::tr("Error"),
+                         QObject::tr("modification non effectué.\n" "Vous ne disposez pas des droit pour cette ajout \n"
+                                     "Click Cancel to exit."), QMessageBox::Cancel);
+         }
+         else if(test)
+        {
+            QMessageBox::information(nullptr, QObject::tr("ok"),
+                        QObject::tr("Modification effectué.\n"
+                                    "Click Cancel to exit."), QMessageBox::Cancel);
+            ui->comboBox_cin_modi->setModel(P.afficher());
+            ui->comboBox_supp->setModel(P.afficher());
+            ui->tableView->setModel(P.afficher());
+        }
+        else
+            QMessageBox::critical(nullptr,QObject::tr("Not ok"),
+            QObject::tr("Modification non effectué. \n"
+                        "Click cancel to exit."),QMessageBox::Cancel);
+
      }
-     else if(test)
-    {
-        QMessageBox::information(nullptr, QObject::tr("ok"),
-                    QObject::tr("Modification effectué.\n"
-                                "Click Cancel to exit."), QMessageBox::Cancel);
-        ui->comboBox_cin_modi->setModel(P.afficher());
-        ui->comboBox_supp->setModel(P.afficher());
-        ui->tableView->setModel(P.afficher());
-    }
-    else
-        QMessageBox::critical(nullptr,QObject::tr("Not ok"),
-        QObject::tr("Modification non effectué. \n"
-                    "Click cancel to exit."),QMessageBox::Cancel);
+     else
+     {
+         bool test = P.modifier_Admin(P.getCin());
+
+         if(P.getAge()!=(d.currentDate().year()-P.getDate().year()))
+         {
+             QMessageBox::warning(nullptr, QObject::tr("Error"),
+                         QObject::tr("modification non effectué.\n" "verifier la cohesion entre la date de naissance et l'age \n"
+                                     "Click Cancel to exit."), QMessageBox::Cancel);
+         }
+         else if(admin_active==false)
+         {
+             QMessageBox::warning(nullptr, QObject::tr("Error"),
+                         QObject::tr("modification non effectué.\n" "Vous ne disposez pas des droit pour cette ajout \n"
+                                     "Click Cancel to exit."), QMessageBox::Cancel);
+         }
+         else if(test)
+        {
+            QMessageBox::information(nullptr, QObject::tr("ok"),
+                        QObject::tr("Modification effectué.\n" "Administrateur modifier"
+                                    "Click Cancel to exit."), QMessageBox::Cancel);
+            ui->comboBox_cin_modi->setModel(P.afficher());
+            ui->comboBox_supp->setModel(P.afficher());
+            ui->tableView->setModel(P.afficher());
+        }
+        else
+            QMessageBox::critical(nullptr,QObject::tr("Not ok"),
+            QObject::tr("Modification non effectué. \n"
+                        "Click cancel to exit."),QMessageBox::Cancel);
+     }
+
+     ui->cin_A_2->clear();
+     ui->nom_2->clear();
+     ui->prenom_2->clear();
+     ui->age_2->clear();
+     ui->ville_2->clear();
+     ui->adresse_2->clear();
+     ui->telephone_2->clear();
+     cin_hide();
 
 }
 
-void S_park::on_comboBox_cin_modi_activated(int index)
+void S_park::on_tableView_activated(const QModelIndex &index)
 {
-    QSqlQuery dry;
-    QString val=ui->comboBox_cin_modi->currentText();
-    QString res = QString::number(index);
-
-    //QString val=ui->comboBox_cin_modi->
-    dry.prepare("SELECT nom,prenom,date_naissance,age,ville,adresse,telephone FROM gs_personnels  WHERE cin ='"+val+"''" );
-    //dry.bindValue(":cin",val);
-    if(dry.exec())
-    {
-        while(dry.next())
-                {
-            ui->nom_2->setText(dry.value(0).toString());
-            ui->prenom_2->setText(dry.value(1).toString());
-            ui->date_naissance_2->setDate(dry.value(2).toDate());
-            ui->age_2->setValue(dry.value(3).toInt());
-            ui->ville_2->setText(dry.value(4).toString());
-            ui->adresse_2->setText(dry.value(5).toString());
-            ui->telephone_2->setText(dry.value(6).toString());
-                }
-    }
-}
-/*void Personnels::on_comboBox_cin_modi_currentIndexChanged(int index)
-{
-    QString val=ui->guichetList->model()->data(index).toString();
+    QString val=ui->ticketList_3->model()->data(index).toString();
         QSqlQuery qry;
-        qry.prepare("Select id,nom,description from guichet where  id='"+val+"'");
+        // recupérer les information de cet ticket du base de données
+        qry.prepare("Select nom,prenom,date_naissance,age,ville,adresse,telephone from gs_personnels where cin ='"+val+"' ");
         if(qry.exec())
         {
             while(qry.next())
                     {
-                        ui->g_id_edit->setText(qry.value(0).toString());
-                        ui->g_nom_edit->setText(qry.value(1).toString());
-                        ui->g_description_edit->setText(qry.value(2).toString());
-                        ui->g_id_edit->show();
-                        ui->t_guichet_id_e_3->setModel(g.affichercatId());
-                        ui->g_id_edit->setEnabled(false);
-                        ui->g_nom_edit->show();
-                        ui->g_description_edit->show();
-                        ui->edit_g->show();
-                        ui->delete_g->show();
-                        ui->g_categorie_edit->show();
+                        ui->comboBox_cin_modi->setCurrentText(val);
+                        ui->nom_2->setText(qry.value(0).toString());
+                        ui->prenom_2->setText(qry.value(1).toString());
+                        ui->date_naissance_2->setDate(qry.value(2).toDate());
+                        ui->age_2->setValue(qry.value(3).toInt());
+                        ui->ville_2->setText(qry.value(4).toString());
+                        ui->adresse_2->setText(qry.value(5).toString());
+                        ui->telephone_2->setText(qry.value(6).toString());
                     }
         }
+}
 
+void S_park::on_comboBox_cin_modi_activated(const QString &arg1)
+{
     QSqlQuery dry;
-    QString res = QString::number(index);
-    //QString val=ui->comboBox_cin_modi->
-    dry.prepare("SELECT nom,prenom,date_naissance,age,ville,adresse,telephone FROM gs_personnels  WHERE cin=:index" );
-    dry.bindValue(":cin",res);
+    QString val=arg1;
+
+    dry.prepare("SELECT nom,prenom,date_naissance,age,ville,adresse,telephone FROM gs_personnels  WHERE cin='"+val+"'" );
     if(dry.exec())
     {
         while(dry.next())
@@ -1046,7 +1172,7 @@ void S_park::on_comboBox_cin_modi_activated(int index)
             ui->telephone_2->setText(dry.value(6).toString());
                 }
     }
-}*/
+}
 
 void S_park::on_tri_ageh_clicked()
 {
@@ -1079,30 +1205,17 @@ void S_park::on_tri_cinb_clicked()
 }
 
 
-/*void Personnels::on_nom_recherche_textEdited(const QString &arg1)
-{
 
-}*/
 
 void S_park::on_nom_recherche_textChanged(const QString &arg1)
 {
     QString ch = arg1;
 
-   /* if(ch == "")
-    {
-        ui->tableView_2->setModel(P.afficher());
-    }
-    else
-    {*/
         ui->tableView_2->setModel(P.rechercher(ch));
-    //}
+
 
 }
 
-/*void Personnels::on_Gestion_currentChanged(int index)
-{
-
-}*/
 
 //statistique
 void S_park::on_Statistique_clicked()
@@ -1173,5 +1286,568 @@ void S_park::Mail_Envoyer(QString status)
 }
 
 
+/*----------------------------------------------------------------------------------------*/
+
+
+
+
+/*--------------------------------------GESTION CLIENT------------------------------*/
+
+void S_park::initialisation(){
+    ui->tabClient_2->setModel(f.afficher_2());
+    ui->c_sexe_modifier->hide();
+     ui->tabClient->setModel(f.afficher());
+     ui->c_cin->clear();
+     ui->c_nom->clear();
+     ui->c_prenom->clear();
+     ui->c_tel->clear();
+     ui->stackedWidget->setCurrentIndex(0);
+     ui->c_cin_e->setEnabled(false);
+     ui->c_nom_e->clear();
+     ui->c_prenom_e->clear();
+     ui->c_tel_e->clear();
+     ui->c_cin_e->hide();
+     ui->c_nom_e->hide();
+     ui->c_prenom_e->hide();
+     ui->c_tel_e->hide();
+     ui->c_daten_e->hide();
+     ui->c_modifier->hide();
+     ui->c_supprimer->hide();
+     ui->c_cin->setValidator(new QIntValidator(0,9999999,this)); // ID AJOUT CONTROLE SAISIE
+     ui->c_nom->setValidator(new QRegExpValidator( QRegExp("[A-Za-z ]*") , this )); // NOM AJOUT CONTROLE SAISIE
+     ui->c_nom_e->setValidator(new QRegExpValidator( QRegExp("[A-Za-z ]*") , this )); // NOM MODIFIER CONTROLE SIAISE
+     ui->c_prenom_e->setValidator(new QRegExpValidator( QRegExp("[A-Za-z ]*") , this )); // NOM MODIFIER CONTROLE SIAISE
+     ui->c_prenom->setValidator(new QRegExpValidator( QRegExp("[A-Za-z ]*") , this )); // NOM MODIFIER CONTROLE SIAISE
+     ui->c_tel->setValidator(new QIntValidator(0,99999999,this)); // PRIX MODIFICATION CONTROLE SAISIE
+     ui->c_tel_e->setValidator(new QIntValidator(0,99999999,this)); // PRIX AJOUT CONTROLE SAISIE
+
+}
+void S_park::initialisation_2(){
+    ui->stackedWidget_3->setCurrentIndex(0);
+    ui->tabClient->setModel(f.afficher());
+    ui->c_sexe_modifier_2->hide();
+    ui->tabClient_2->setModel(f.afficher_2());
+    ui->c_cin_2->clear();
+    ui->c_nom_2->clear();
+    ui->c_prenom_2->clear();
+    ui->c_tel_2->clear();
+    ui->clientStacked->setCurrentIndex(1);
+    ui->c_cin_e_2->setEnabled(false);
+    ui->c_nom_e_2->clear();
+    ui->c_prenom_e_2->clear();
+    ui->c_tel_e_2->clear();
+    ui->c_cin_e_2->hide();
+    ui->c_nom_e_2->hide();
+    ui->c_prenom_e_2->hide();
+    ui->c_tel_e_2->hide();
+    ui->c_daten_e_2->hide();
+    ui->c_modifier_2->hide();
+    ui->c_supprimer_2->hide();
+    ui->c_cin_2->setValidator(new QIntValidator(0,9999999,this)); // ID AJOUT CONTROLE SAISIE
+    ui->c_nom_2->setValidator(new QRegExpValidator( QRegExp("[A-Za-z ]*") , this )); // NOM AJOUT CONTROLE SAISIE
+    ui->c_nom_e_2->setValidator(new QRegExpValidator( QRegExp("[A-Za-z ]*") , this )); // NOM MODIFIER CONTROLE SIAISE
+    ui->c_prenom_e_2->setValidator(new QRegExpValidator( QRegExp("[A-Za-z ]*") , this )); // NOM MODIFIER CONTROLE SIAISE
+    ui->c_prenom_2->setValidator(new QRegExpValidator( QRegExp("[A-Za-z ]*") , this )); // NOM MODIFIER CONTROLE SIAISE
+    ui->c_tel_2->setValidator(new QIntValidator(0,99999999,this)); // PRIX MODIFICATION CONTROLE SAISIE
+    ui->c_tel_e_2->setValidator(new QIntValidator(0,99999999,this)); // PRIX AJOUT CONTROLE SAISIE
+
+}
+
+void S_park::on_ajoutForm_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+
+void S_park::on_c_ajouterBtn_clicked()
+{
+    int cin = ui->c_cin->text().toInt();
+    QString nom = ui->c_nom->text();
+    QString prenom = ui->c_prenom->text();
+    int tel = ui->c_tel->text().toInt();
+    QString daten = ui->c_date->date().toString("dd/MM/yyyy");
+    QString telf = QString::number(tel);
+    QString sexe=ui->c_sexe_ajout->currentText();
+    if (cin<=0){
+        QMessageBox::critical(nullptr, QObject::tr("Client ajout"),
+                                      QObject::tr("Verifier le champ Cin!! .\n"
+                                                  "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    else if(nom.size()<=2){
+        QMessageBox::critical(nullptr, QObject::tr("Client ajout"),
+                                      QObject::tr("Le nom doit etre plus que 2 characteres!! .\n"
+                                                  "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    else if(prenom.size()<=2){
+        QMessageBox::critical(nullptr, QObject::tr("Client ajout"),
+                                      QObject::tr("Le prenom doit etre plus que 2 characteres!! .\n"
+                                                  "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    else if(telf.size()<8 or telf.size()>8  ){
+        QMessageBox::critical(nullptr, QObject::tr("Client ajout"),
+                                      QObject::tr("Le num tel doit etre 8 chiffres .\n"
+                                                  "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    else if(sexe=="SEXE"){
+        QMessageBox::critical(nullptr, QObject::tr("Client Modification"),
+                              QObject::tr("CHOISIR SEXE .\n"
+                                          "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    else{
+    client c(cin,nom,prenom,tel,daten,sexe);
+    bool validation = c.ajouter();
+    if (validation){
+        initialisation();
+        QMessageBox::information(nullptr, QObject::tr("Client ajout"),
+                                      QObject::tr("Client ajouté !! .\n"
+                                                  "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    else{
+        QMessageBox::critical(nullptr, QObject::tr("Client ajout"),
+                                      QObject::tr("CIN/TEL deja utiliser!! .\n"
+                                                  "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    }
+}
+
+/*void S_park::on_pushButton_clicked()
+{
+
+}
+*/
+void S_park::on_c_recherche_textChanged(const QString &arg1)
+{
+    ui->tabClient->setModel(f.afficherRech(arg1));
+}
+
+void S_park::on_tableFournisseur_activated(const QModelIndex &index)
+{
+
+}
+
+void S_park::on_c_modifier_clicked()
+{
+    int cin = ui->c_cin_e->text().toInt();
+    QString nom = ui->c_nom_e->text();
+    QString prenom = ui->c_prenom_e->text();
+    int tel = ui->c_tel_e->text().toInt();
+    QString daten = ui->c_daten_e->date().toString("dd/MM/yyyy");
+    QString telf = QString::number(tel);
+    QString sexe= ui->c_sexe_modifier->currentText();
+    if (cin<=0){
+        QMessageBox::critical(nullptr, QObject::tr("Client Modification"),
+                                      QObject::tr("Verifier le champ Cin!! .\n"
+                                                  "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    else if(nom.size()<=2){
+        QMessageBox::critical(nullptr, QObject::tr("Client Modification"),
+                                      QObject::tr("Le nom doit etre plus que 2 characteres!! .\n"
+                                                  "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    else if(prenom.size()<=2){
+        QMessageBox::critical(nullptr, QObject::tr("Client Modification"),
+                                      QObject::tr("Le prenom doit etre plus que 2 characteres!! .\n"
+                                                  "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    else if(telf.size()<8 or telf.size()>8  ){
+        QMessageBox::critical(nullptr, QObject::tr("Client Modification"),
+                                      QObject::tr("Le num tel doit etre 8 chiffres .\n"
+                                                  "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    else if(sexe=="SEXE"){
+        QMessageBox::critical(nullptr, QObject::tr("Client Modification"),
+                              QObject::tr("CHOISIR SEXE .\n"
+                                          "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    else{
+    client c(cin,nom,prenom,tel,daten,sexe);
+    bool validation = c.modifier(cin);
+    if (validation){
+        initialisation();
+        QMessageBox::information(nullptr, QObject::tr("Client Modification"),
+                                      QObject::tr("Fournisseur modifié !! .\n"
+                                                  "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    else{
+        QMessageBox::critical(nullptr, QObject::tr("Client Modification"),
+                                      QObject::tr("TEL deja utiliser!! .\n"
+                                                  "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    }
+}
+
+void S_park::on_c_supprimer_clicked()
+{
+    int id=ui->c_cin_e->text().toInt();
+
+    bool test2=f.supprimer(id);
+    if(test2){
+        initialisation();
+        QMessageBox::information(nullptr, QObject::tr("Client Supprimer"),
+                                      QObject::tr("Succés .\n" "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    else{
+        initialisation();
+        QMessageBox::critical(nullptr, QObject::tr("Client Supprimer"),
+                                      QObject::tr("ERROR !\n"), QMessageBox::Cancel);
+
+    }
+}
+
+void S_park::on_tabClient_activated(const QModelIndex &index)
+{
+    QString val=ui->tabClient->model()->data(index).toString();
+        QSqlQuery qry;
+        qry.prepare("Select * from client where  cin='"+val+"'");
+        if(qry.exec())
+        {
+            while(qry.next())
+                    {
+                        ui->c_cin_e->setText(val);
+                        ui->c_nom_e->setText(qry.value(1).toString());
+                        ui->c_prenom_e->setText(qry.value(2).toString());
+                        ui->c_tel_e->setText(qry.value(4).toString());
+
+                        ui->c_cin_e->setEnabled(false);
+                        ui->c_nom_e->show();
+                        ui->c_cin_e->show();
+                        ui->c_prenom_e->show();
+                        ui->c_tel_e->show();
+                        ui->c_daten_e->show();
+                        ui->c_modifier->show();
+                        ui->c_supprimer->show();
+                        ui->c_sexe_modifier->show();
+                    }
+        }
+}
+
+/*void S_park::on_pushButton_2_clicked()
+{
+    statistiques s;
+    s.exec();
+}*/
+
+void S_park::on_comboTri_currentIndexChanged(int index)
+{
+    ui->tabClient->setModel(f.Tri(index));
+}
+
+void S_park::on_c_ajouterBtn_2_clicked()
+{
+    int cin = ui->c_cin_2->text().toInt();
+    QString nom = ui->c_nom_2->text();
+    QString prenom = ui->c_prenom_2->text();
+    int tel = ui->c_tel_2->text().toInt();
+    QString daten = ui->c_date_2->date().toString("dd/MM/yyyy");
+    QString telf = QString::number(tel);
+    QString gender="";
+           int genderIndex =  ui->c_sexe_ajout_2->currentIndex();
+
+
+
+
+    if (cin<=0){
+        QMessageBox::critical(nullptr, QObject::tr("CLIENT ADD"),
+                                      QObject::tr("INVLAID CIN ! .\n"
+                                                  "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    else if(nom.size()<=2){
+        QMessageBox::critical(nullptr, QObject::tr("CLIENT ADD"),
+                                      QObject::tr("INVALID FIRST NAME! .\n"
+                                                  "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    else if(prenom.size()<=2){
+        QMessageBox::critical(nullptr, QObject::tr("CLIENT ADD"),
+                                      QObject::tr("INVALID LAST NAME! .\n"
+                                                  "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    else if(telf.size()<8 or telf.size()>8  ){
+        QMessageBox::critical(nullptr, QObject::tr("CLIENT ADD"),
+                                      QObject::tr("PHONE NUMBER MUST BE 8 CHARACTERS ! \n"
+                                                  "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+
+
+
+    else{
+        if(genderIndex == 0) {
+            QMessageBox::critical(nullptr, QObject::tr("CLIENT ADD"),
+                                  QObject::tr("SELECT GENDER .\n"
+                                              "Click Ok to exit."), QMessageBox::Ok);
+        }
+        else if (genderIndex != 0){
+    switch (genderIndex){
+    case 1 :
+        gender ="FEMININ";
+        break;
+    case 2 :
+        gender ="MASCULIN";
+        break;
+        }
+    client c(cin,nom,prenom,tel,daten,gender);
+    bool validation = c.ajouter();
+    if (validation){
+        initialisation_2();
+        QMessageBox::information(nullptr, QObject::tr("CLIENT ADD"),
+                                      QObject::tr("CLIENT ADDED !! .\n"
+                                                  "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    else if(!validation){
+        QMessageBox::critical(nullptr, QObject::tr("CLIENT ADD"),
+                                      QObject::tr("CIN OR PHONE ALREADY IN USE ! \n"
+                                                  "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    }
+}
+}
+
+void S_park::on_Switch_2_English_clicked()
+{
+    ui->clientStacked->setCurrentIndex(1);
+}
+
+/*void S_park::on_pushButton_5_clicked()
+{
+    statistiques s;
+    s.exec();
+}*/
+
+void S_park::on_comboTri_2_currentIndexChanged(int index)
+{
+    ui->tabClient_2->setModel(f.Tri_2(index));
+}
+
+void S_park::on_c_recherche_2_textChanged(const QString &arg1)
+{
+    ui->tabClient_2->setModel(f.afficherRech_2(arg1));
+
+}
+
+void S_park::on_c_modifier_2_clicked()
+{
+    int cin = ui->c_cin_e_2->text().toInt();
+    QString nom = ui->c_nom_e_2->text();
+    QString prenom = ui->c_prenom_e_2->text();
+    int tel = ui->c_tel_e_2->text().toInt();
+    QString daten = ui->c_daten_e_2->date().toString("dd/MM/yyyy");
+    QString telf = QString::number(tel);
+    QString gender="";
+           int genderIndex =  ui->c_sexe_modifier_2->currentIndex();
+
+
+
+
+           if (cin<=0){
+               QMessageBox::critical(nullptr, QObject::tr("CLIENT MODIFY"),
+                                             QObject::tr("INVLAID CIN ! .\n"
+                                                         "Click Ok to exit."), QMessageBox::Ok);
+
+           }
+           else if(nom.size()<=2){
+               QMessageBox::critical(nullptr, QObject::tr("CLIENT MODIFY"),
+                                             QObject::tr("INVALID FIRST NAME! .\n"
+                                                         "Click Ok to exit."), QMessageBox::Ok);
+
+           }
+           else if(prenom.size()<=2){
+               QMessageBox::critical(nullptr, QObject::tr("CLIENT MODIFY"),
+                                             QObject::tr("INVALID LAST NAME! .\n"
+                                                         "Click Ok to exit."), QMessageBox::Ok);
+
+           }
+           else if(telf.size()<8 or telf.size()>8  ){
+               QMessageBox::critical(nullptr, QObject::tr("CLIENT MODIFY"),
+                                             QObject::tr("PHONE NUMBER MUST BE 8 CHARACTERS ! \n"
+                                                         "Click Ok to exit."), QMessageBox::Ok);
+
+           }
+
+
+
+
+
+    else{
+        if(genderIndex == 0) {
+            QMessageBox::critical(nullptr, QObject::tr("CLIENT MODIFY"),
+                                  QObject::tr("SELECT GENDER .\n"
+                                              "Click Ok to exit."), QMessageBox::Ok);
+        }
+        else if (genderIndex != 0){
+    switch (genderIndex){
+    case 1 :
+        gender ="FEMININ";
+        break;
+    case 2 :
+        gender ="MASCULIN";
+        break;
+        }
+    client c(cin,nom,prenom,tel,daten,gender);
+    bool validation = c.modifier(cin);
+    if (validation){
+        initialisation_2();
+        QMessageBox::information(nullptr, QObject::tr("CLIENT MODIFY"),
+                                      QObject::tr("CLIENT MODIFIED !! .\n"
+                                                  "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    else if(!validation){
+        QMessageBox::critical(nullptr, QObject::tr("CLIENT MODIFY"),
+                                      QObject::tr("PHONE ALREADY IN USE ! \n"
+                                                  "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    }
+}}
+
+void S_park::on_tabClient_2_activated(const QModelIndex &index)
+{
+    QString val=ui->tabClient_2->model()->data(index).toString();
+        QSqlQuery qry;
+        qry.prepare("Select * from client where  cin='"+val+"'");
+        if(qry.exec())
+        {
+            while(qry.next())
+                    {
+                        ui->c_cin_e_2->setText(val);
+                        ui->c_nom_e_2->setText(qry.value(1).toString());
+                        ui->c_prenom_e_2->setText(qry.value(2).toString());
+                        ui->c_tel_e_2->setText(qry.value(4).toString());
+
+                        ui->c_cin_e_2->setEnabled(false);
+                        ui->c_nom_e_2->show();
+                        ui->c_cin_e_2->show();
+                        ui->c_prenom_e_2->show();
+                        ui->c_tel_e_2->show();
+                        ui->c_daten_e_2->show();
+                        ui->c_modifier_2->show();
+                        ui->c_supprimer_2->show();
+                        ui->c_sexe_modifier_2->show();
+                    }
+        }
+}
+
+void S_park::on_c_supprimer_2_clicked()
+{
+    int id=ui->c_cin_e_2->text().toInt();
+
+    bool test2=f.supprimer(id);
+    if(test2){
+        initialisation_2();
+        QMessageBox::information(nullptr, QObject::tr("CLIENT DELETE"),
+                                      QObject::tr("CLIENT DELETED SUCCESSFULLY .\n" "Click Ok to exit."), QMessageBox::Ok);
+
+    }
+    else{
+        initialisation_2();
+        QMessageBox::critical(nullptr, QObject::tr("CLIENT DELETE"),
+                                      QObject::tr("INVALID CIN !\n"), QMessageBox::Cancel);
+
+    }
+}
+
+void S_park::on_pushButton_6_clicked()
+{
+    ui->clientStacked->setCurrentIndex(0);
+}
+
+void S_park::on_ajoutForm_2_clicked()
+{
+    ui->stackedWidget_3->setCurrentIndex(1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void S_park::on_Ok_modi_password_clicked()
+{
+
+   QString username = ui->nom_utilateur_2->text();
+   l.setPassword(ui->nouveau_mot_de_passe->text());
+   l.setUsername(username);
+   QString a_password;
+    QSqlQuery q;
+
+     q.prepare("select password from gs_personnels where username = '"+username+"'");
+
+      if(q.exec())
+      {
+          while(q.next())
+          a_password = q.value(0).toString();
+      }
+
+      if(a_password != ui->mot_de_passe_2->text())
+      {
+          QMessageBox::critical(nullptr, QObject::tr("Failure"),
+                      QObject::tr("le mot de passe est incorrect .\n"
+                                  "Click Cancel to exit."), QMessageBox::Cancel);
+      }
+      else
+      {
+           bool test = l.modifier_Compte();
+        if(ui->nouveau_mot_de_passe->text()!=ui->Nou_mot_de_passe_confirm->text())
+      {
+          ui->label_Password->show();
+          ui->label_Password->setText("le mot de passe n'est pas identique");
+      }
+      else if(test)
+      {
+          QMessageBox::information(nullptr, QObject::tr("Sucess"),
+                      QObject::tr("mot de passe changé .\n"
+                                  "Click Cancel to exit."), QMessageBox::Cancel);
+
+      }
+      else
+      {
+          QMessageBox::critical(nullptr, QObject::tr("Failure"),
+                      QObject::tr("l'utilsateur n'existe pas.\n"
+                                  "Click Cancel to exit."), QMessageBox::Cancel);
+      }
+
+      }
+      cin_hide();
+
+}
+
+void S_park::on_modifier_password_clicked()
+{
+    ui->stackedWidget_4->setCurrentIndex(1);
+}
+
+void S_park::on_Ok_modi_password_2_clicked()
+{
+    ui->stackedWidget_4->setCurrentIndex(0);
+}
 
 

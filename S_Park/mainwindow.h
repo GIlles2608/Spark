@@ -7,6 +7,7 @@
 #include <QMessageBox>
 #include "personnel.h"
 #include "s_park.h"
+#include "smtp.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,6 +19,7 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
+    void Mail_Envoyer(QString status);
     ~MainWindow();
 
 private slots:
@@ -32,8 +34,16 @@ private slots:
     void on_pushButton_5_clicked();
 
     void on_admin_login_clicked();
+
+    void on_pushButton_clicked();
+
+    void on_pushButton_6_clicked();
+
+    void on_pushButton_8_clicked();
+
 private:
     Ui::MainWindow *ui;
     login l;
+    S_park s;
 };
 #endif // MAINWINDOW_H

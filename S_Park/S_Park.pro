@@ -22,14 +22,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     achat.cpp \
     animal.cpp \
+    client.cpp \
     connexion.cpp \
-    gestion_bus.cpp \
     guichet.cpp \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
     personnel.cpp \
-    produit.cpp \
     qcustomplot.cpp \
     s_park.cpp \
     smtp.cpp \
@@ -38,13 +37,12 @@ SOURCES += \
 HEADERS += \
     achat.h \
     animal.h \
+    client.h \
     connexion.h \
-    gestion_bus.h \
     guichet.h \
     login.h \
     mainwindow.h \
     personnel.h \
-    produit.h \
     qcustomplot.h \
     s_park.h \
     smtp.h \
@@ -58,3 +56,5 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES +=

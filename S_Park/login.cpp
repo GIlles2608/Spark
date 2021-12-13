@@ -19,22 +19,32 @@ login::login(QString u,QString p)
 bool login::connecter()
 {
     QSqlQuery query;
-      query.prepare("select * from gs_personnels where username =: username,password =:password");
-      query.bindValue(":username",username);
-      query.bindValue(":password",password);
+      query.prepare("select * from gs_personnels where username =? and password =?");
+      query.addBindValue(username);
+      query.addBindValue(password);
 
-      if (query.size() > 0)
+      if (query.exec())
       {
           // You login a user here
         //  QString name = query.value(1).toString();
         //  qDebug() << name << "is logged in";
+       int count = 0;
+         while(query.next())
+         {
+             count ++;
+         }
 
+         if(count == 1)
           return true;
+         else if(count<1)
+          {
+             qDebug() << "Login failed. Invalid username or password.";
+             return  false;
+          }
       }
       else
       {
-          qDebug() << "Login failed. Invalid username or password.";
-
+             qDebug() << "Probleme de connexion dba";
           return false;
       }
 
@@ -58,7 +68,7 @@ bool login::creer_utilsateur(int cin)
 bool login::modifier_Compte()
 {
     QSqlQuery query;
-    query.prepare("Update gs_personnels set username=:username,password=:password");
+    query.prepare("Update gs_personnels set password=:password where username=:username");
     query.bindValue(":username",username);
     query.bindValue(":password",password);
 

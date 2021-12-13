@@ -194,8 +194,8 @@ QPushButton:hover
      <widget class="QPushButton" name="pushButton_3">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>540</y>
+        <x>720</x>
+        <y>30</y>
         <width>171</width>
         <height>28</height>
        </rect>
@@ -254,6 +254,50 @@ QPushButton:hover
       </property>
       <property name="text">
        <string>Employer</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_6">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>550</y>
+        <width>271</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+ {
+      border-style: groove;
+      border-radius: 7;
+      padding: 3px;
+
+     color: qlineargradient(spread:pad, x1:0.439, y1:0.5, x2:1, y2:1, stop:0.134783 rgba(0, 255, 94, 255), stop:1 rgba(255, 255, 255, 255));
+
+      background-color: qlineargradient(spread:pad, x1:0.565, y1:0.386364, x2:1, y2:0, stop:0.0869565 rgba(110, 40, 170, 255), stop:1 rgba(255, 255, 255, 255));
+ 
+   font: 10pt &quot;Copperplate Gothic Bold&quot;; 
+ }
+
+QPushButton:focus
+
+ {
+
+  
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.491304 rgba(255, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));
+ }
+
+QPushButton:hover
+
+ {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.491304 rgba(255, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));
+
+ }
+
+</string>
+      </property>
+      <property name="text">
+       <string>Mot de passe oublié</string>
       </property>
      </widget>
     </widget>
@@ -482,6 +526,168 @@ QLineEdit:focus
       </property>
       <property name="placeholderText">
        <string>CIN_EMPLOYE</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_2">
+     <widget class="QLineEdit" name="e_mail_2">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>310</y>
+        <width>281</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+	font: 8pt &quot;Times New Roman&quot;;
+padding: 1px;
+border-style: solid;
+border: 2px solid rgb(85,10,205);
+border-radius: 8px;
+font-color:green;
+ background-color:white;
+color:green;
+}
+
+QLineEdit:focus
+{
+  border-color:rgb(200,50,10);
+}</string>
+      </property>
+      <property name="placeholderText">
+       <string>Mail</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="nom_utilateur_3">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>280</y>
+        <width>161</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+	font: 8pt &quot;Times New Roman&quot;;
+padding: 1px;
+border-style: solid;
+border: 2px solid rgb(85,10,205);
+border-radius: 8px;
+font-color:green;
+   background-color:white;
+color:green;
+}
+
+QLineEdit:focus
+{
+  border-color:rgb(200,50,10);
+}</string>
+      </property>
+      <property name="inputMask">
+       <string/>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>Nom_utilsateur</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>600</x>
+        <y>380</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+ {
+      border-style: groove;
+      border-radius: 7;
+      padding: 3px;
+
+     color: qlineargradient(spread:pad, x1:0.439, y1:0.5, x2:1, y2:1, stop:0.134783 rgba(0, 255, 94, 255), stop:1 rgba(255, 255, 255, 255));
+
+      background-color: qlineargradient(spread:pad, x1:0.565, y1:0.386364, x2:1, y2:0, stop:0.0869565 rgba(110, 40, 170, 255), stop:1 rgba(255, 255, 255, 255));
+ 
+   font: 10pt &quot;Copperplate Gothic Bold&quot;; 
+ }
+
+QPushButton:focus
+
+ {
+
+  
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.491304 rgba(255, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));
+ }
+
+QPushButton:hover
+
+ {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.491304 rgba(255, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));
+
+ }
+
+</string>
+      </property>
+      <property name="text">
+       <string>ok</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_8">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>380</y>
+        <width>93</width>
+        <height>28</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton
+ {
+      border-style: groove;
+      border-radius: 7;
+      padding: 3px;
+
+     color: qlineargradient(spread:pad, x1:0.439, y1:0.5, x2:1, y2:1, stop:0.134783 rgba(0, 255, 94, 255), stop:1 rgba(255, 255, 255, 255));
+
+      background-color: qlineargradient(spread:pad, x1:0.565, y1:0.386364, x2:1, y2:0, stop:0.0869565 rgba(110, 40, 170, 255), stop:1 rgba(255, 255, 255, 255));
+ 
+   font: 10pt &quot;Copperplate Gothic Bold&quot;; 
+ }
+
+QPushButton:focus
+
+ {
+
+  
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.491304 rgba(255, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));
+ }
+
+QPushButton:hover
+
+ {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.491304 rgba(255, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));
+
+ }
+
+</string>
+      </property>
+      <property name="text">
+       <string>Retour</string>
       </property>
      </widget>
     </widget>
